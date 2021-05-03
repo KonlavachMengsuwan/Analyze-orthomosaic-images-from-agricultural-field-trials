@@ -64,7 +64,7 @@ EX1.Shape<-fieldShape(mosaic = EX1.RemSoil, ncols = 14, nrows = 9, fieldMap = fi
 
 head(EX1.Shape$fieldShape@data)
 ```
-![](Joined.png)<!-- -->
+![](Joined.PNG)<!-- -->
 
 ```
 plotRGB(EX1.RemSoil$newMosaic)
@@ -75,7 +75,7 @@ plot(EX1.Shape$fieldShape,add=T)
 
 ## 7. Vegetation Indices
 
-![](Vegetation_Indices.png)<!-- -->
+![](Vegetation_Indices.PNG)<!-- -->
 ```
 EX1.Indices<- fieldIndex(mosaic = EX1.RemSoil$newMosaic, Red = 1, Green = 2, Blue = 3, 
                           index = c("NGRDI","BGI"), 
