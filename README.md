@@ -52,4 +52,34 @@ EX1.Shape<-fieldShape(mosaic = EX1.RemSoil,ncols = 14, nrows = 9)
 ```
 ![](EX1_Shape.png)<!-- -->
 
-## 6. 
+## 6. Join information to shapefile
+```
+DataTable <- read.csv("DataTable.csv",header = T)  
+fieldMap <- fieldMap(fieldPlot=DataTable$Plot, fieldColumn=DataTable$Row, fieldRow=DataTable$Range, decreasing=T)
+fieldMap
+```
+
+```
+EX1.Shape<-fieldShape(mosaic = EX1.RemSoil, ncols = 14, nrows = 9, fieldMap = fieldMap, fieldData = DataTable, ID = "Plot")
+
+head(EX1.Shape$fieldShape@data)
+```
+![](Joined.png)<!-- -->
+
+```
+plotRGB(EX1.RemSoil$newMosaic)
+plot(EX1.Shape$fieldShape,add=T)
+```
+![](grid.png)<!-- -->
+
+
+## 7. Vegetation Indices
+
+![](Vegetation_Indices.png)<!-- -->
+```
+EX1.Indices<- fieldIndex(mosaic = EX1.RemSoil$newMosaic, Red = 1, Green = 2, Blue = 3, 
+                          index = c("NGRDI","BGI"), 
+                          myIndex = c("(Red-Blue)/Green"))
+```
+![](NGRDI_BGI.png)<!-- -->
+
